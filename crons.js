@@ -9,15 +9,15 @@ client.on("error", function (err) {
 });
 
 var connection = mysql.createConnection({
-	host     : '10.142.171.183',
-	user     : 'MyntraRep0rtUsEr',
-	password : '9eguawKETuBRVEku',
-	database : 'myntra'
+	host     : 'dbhost',
+	user     : 'username',
+	password : 'passowrd',
+	database : 'db'
 });
 
 connection.connect();
 
-connection.query('SELECT login,mobile from xcart_customers WHERE first_login>(UNIX_TIMESTAMP()-60*60)', function(err, rows, fields) {
+connection.query('SELECT email,mobile from customers', function(err, rows, fields) {
 	if (err)  console.log(err);
 	async.forEach(rows,function(row,callback){
 		console.log(row.login+' : '+row.mobile);
